@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import moment from 'moment';
 import './App.css';
+import CardItem from './CardItem';
 
 function App() {
 
@@ -45,18 +45,13 @@ function App() {
       <div className='cardDivInner'>
         {
           items.length ? items?.map((item: any) => {
-            const { ImageStyle_thumbnail, field_photo_image_section, last_update, nid, title } = item.node
-            const formattedDate = moment(last_update * 1000).format('MMM DD, YYYY hh:mm A [IST]');
+            const { field_photo_image_section, last_update, title } = item.node
 
-            return <div key={nid} className='cardItem'>
-              <div className='cardImg'>
-                <img src={field_photo_image_section} alt={ImageStyle_thumbnail} />
-              </div>
-              <div className='cardDesc'>
-                <h5>{title}</h5>
-                <h6>{formattedDate}</h6>
-              </div>
-            </div>
+            return <CardItem
+              field_photo_image_section={field_photo_image_section}
+              title={title}
+              last_update={last_update}
+            />
           }) : <h5 className='noData'>No Data</h5>
         }
         {
