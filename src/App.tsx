@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import CardItem from './CardItem';
+import ExampleFilePond from './FIlePondUpload';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
     <div className="cardDiv"
       onScroll={handleScroll}
     >
+      <ExampleFilePond/>
       <div className='cardDivInner'>
         {
           items.length ? items?.map((item: any) => {
